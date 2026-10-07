@@ -57,6 +57,14 @@ mvn spring-boot:run
 
 A aplicação sobe em `http://localhost:8080`. Na primeira execução, se `ADMIN_EMAIL` e `ADMIN_SENHA` estiverem definidos e ainda não existir um admin cadastrado, a conta de administrador é criada automaticamente.
 
+## Testes
+
+```
+mvn test
+```
+
+Os testes cobrem o cadastro de usuário (hash de senha, bloqueio de e-mail duplicado) e o controle de acesso por perfil nas rotas dos painéis. Não dependem de conexão com o MongoDB Atlas.
+
 ## Perfis de usuário
 
 O sistema tem três perfis:
