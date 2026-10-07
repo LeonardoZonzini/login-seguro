@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::title}, ~{::section})}">
+<head>
+    <title>Painel do administrador</title>
+</head>
+<body>
+<section class="caixa-painel">
+    <h1>Olá, <span th:text="${usuarioLogado.nome}"></span></h1>
+    <p>Perfil: <strong th:text="${usuarioLogado.papel}"></strong></p>
+
+    <h2>Usuários</h2>
+    <table class="tabela-usuarios">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Perfil</th>
+            <th>Status</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="usuario : ${usuarios}">
+            <td th:text="${usuario.nome}"></td>
+            <td th:text="${usuario.email}"></td>
+            <td th:text="${usuario.papel}"></td>
+            <td th:text="${usuario.ativo} ? 'Ativo' : 'Inativo'"></td>
+            <td class="acoes">
+                <form th:action="@{'/painel/admin/usuarios/' + ${usuario.id} + '/papel'}" method="post">
+                    <select name="papel">
+                        <option th:each="papel : ${T(com.loginseguro.app.model.Papel).values()}"
+                                th:value="${papel}"
+                                th:text="${papel}"
+                                th:selected="${papel == usuario.papel}"></option>
+                    </select>
+                    <button type="submit">Alterar</button>
+                </form>
+                <form th:action="@{'/painel/admin/usuarios/' + ${usuario.id} + '/status'}" method="post">
+                    <button type="submit" th:text="${usuario.ativo} ? 'Desativar' : 'Ativar'"></button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+</body>
+</html>

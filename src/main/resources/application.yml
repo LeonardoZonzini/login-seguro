@@ -1,0 +1,19 @@
+server:
+  port: ${PORT:8080}
+
+spring:
+  application:
+    name: login-seguro
+  data:
+    mongodb:
+      uri: ${MONGODB_URI}
+  session:
+    store-type: mongodb
+    timeout: 30m
+    mongodb:
+      collection-name: sessoes
+
+app:
+  admin:
+    email: ${ADMIN_EMAIL:}
+    senha: ${ADMIN_SENHA:}

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::title}, ~{::section})}">
+<head>
+    <title>Painel</title>
+</head>
+<body>
+<section class="caixa-painel">
+    <h1>Olá, <span th:text="${usuarioLogado.nome}"></span></h1>
+    <p>Perfil: <strong th:text="${usuarioLogado.papel}"></strong></p>
+    <p>Esta é a sua área como usuário.</p>
+</section>
+</body>
+</html>

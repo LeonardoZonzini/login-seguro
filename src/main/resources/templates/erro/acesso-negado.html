@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::title}, ~{::section})}">
+<head>
+    <title>Acesso negado</title>
+</head>
+<body>
+<section class="caixa-painel">
+    <h1>Acesso negado</h1>
+    <p>Você não tem permissão para acessar essa página.</p>
+    <a th:href="@{/painel}">Voltar ao painel</a>
+</section>
+</body>
+</html>

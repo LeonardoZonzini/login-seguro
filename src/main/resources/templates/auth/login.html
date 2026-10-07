@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::title}, ~{::section})}">
+<head>
+    <title>Entrar</title>
+</head>
+<body>
+<section class="caixa-formulario">
+    <h1>Entrar</h1>
+
+    <p class="aviso aviso-sucesso" th:if="${param.cadastrado != null}">Conta criada. Faça login para continuar.</p>
+    <p class="aviso aviso-sucesso" th:if="${param.sair != null}">Sessão encerrada.</p>
+    <p class="aviso aviso-erro" th:if="${param.erro != null}">E-mail ou senha inválidos.</p>
+
+    <form th:action="@{/login}" method="post" class="formulario">
+        <label for="username">E-mail</label>
+        <input type="email" id="username" name="username" required autofocus>
+
+        <label for="password">Senha</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Entrar</button>
+    </form>
+
+    <p class="link-secundario">Não tem conta? <a th:href="@{/registro}">Cadastre-se</a></p>
+</section>
+</body>
+</html>
